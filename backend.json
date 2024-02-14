@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "properties": {
+      "age": {
+        "type": "string"
+      },
+      "birthday": {
+        "type": "string",
+        "pattern": "^\\w{3}\\s\\d{1,2},\\s\\d{4}$"
+      },
+      "hometown": {
+        "type": "string"
+      },
+      "image": {
+        "type": "string",
+        "format": "uri"
+      },
+      "name": {
+        "type": "string"
+      }
+    },
+    "required": ["age", "birthday", "hometown", "image", "name"]
+  }
+}
