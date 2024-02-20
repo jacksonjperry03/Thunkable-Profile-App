@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        /* CSS styles for the banner */
+        .banner {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* CSS styles for the user profiles */
+        .profile {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* CSS styles for the embedded app */
+        .app-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <!-- Your logo here -->
+        <img src="305soft logo.png" alt="Logo" style="width: 100px; height: auto;">
+    </div>
+
+    <div class="profile">
+        <!-- Displayed profile of user 1 -->
+        <h2>User 1 Profile</h2>
+        <p>Age: <span id="user1-age"></span></p>
+        <p>Birthday: <span id="user1-birthday"></span></p>
+        <p>Hometown: <span id="user1-hometown"></span></p>
+        <p>Name: <span id="user1-name"></span></p>
+        <img src="" id="user1-image" alt="User 1 Image" style="width: 100px; height: auto;">
+        <!-- Add more profile details as needed -->
+    </div>
+
+    <div class="profile">
+        <!-- Displayed profile of user 2 -->
+        <h2>User 2 Profile</h2>
+        <p>Age: <span id="user2-age"></span></p>
+        <p>Birthday: <span id="user2-birthday"></span></p>
+        <p>Hometown: <span id="user2-hometown"></span></p>
+        <p>Name: <span id="user2-name"></span></p>
+        <img src="" id="user2-image" alt="User 2 Image" style="width: 100px; height: auto;">
+        <!-- Add more profile details as needed -->
+    </div>
+
+    <div class="app-container">
+        <!-- Embedded Profile app web app -->
+        <iframe src="path/to/your/profile/app" width="100%" height="500"></iframe>
+    </div>
+
+    <!-- Your JavaScript code here -->
+    <script src="path/to/your/javascript.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+        var firebaseConfig = {
+            apiKey: "AIzaSyAm-yGdgj74vaJaRtl0FMAcqMI6zRV3Ypw",
+            authDomain: "profile-app-4788e.firebaseapp.com",
+            databaseURL: "https://profile-app-4788e-default-rtdb.firebaseio.com",
+            projectId: "profile-app-4788e",
+            storageBucket: "profile-app-4788e.appspot.com",
+            messagingSenderId: "571897686663",
+            appId: "1:571897686663:web:11b728e09b6a05f3dfe622",
+            measurementId: "G-S63952LGFV"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        var user1Ref = firebase.database().ref('G7UeeO3mR0g1Ntz7cTwF7ThF3qF2');
+        user1Ref.on('value', function(snapshot) {
+            var user1 = snapshot.val();
+            if (user1) {
+                document.getElementById('user1-age').textContent = user1.age;
+                document.getElementById('user1-birthday').textContent = user1.birthday;
+                document.getElementById('user1-hometown').textContent = user1.hometown;
+                document.getElementById('user1-name').textContent = user1.name;
+                document.getElementById('user1-image').src = user1.image;
+                // Add more profile details as needed
+            }
+        });
+
+        var user2Ref = firebase.database().ref('KliQVhb02HWCWZTZ1tPRo10VCa32');
+        user2Ref.on('value', function(snapshot) {
+            var user2 = snapshot.val();
+            if (user2) {
+                document.getElementById('user2-age').textContent = user2.age;
+                document.getElementById('user2-birthday').textContent = user2.birthday;
+                document.getElementById('user2-hometown').textContent = user2.hometown;
+                document.getElementById('user2-name').textContent = user2.name;
+                document.getElementById('user2-image').src = user2.image;
+                // Add more profile details as needed
+            }
+        });
+    </script>
+</body>
+</html>
